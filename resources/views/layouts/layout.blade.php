@@ -8,22 +8,18 @@
     <meta name="author" content="" />
     <title>@yield('title', 'Sistem Prediksi Kekeringan BMKG Bengkulu')</title>
 
-    <!-- Local CSS -->
+    <!-- CSS -->
     <link href="{{ secure_asset('assets/css/app.css') }}" rel="stylesheet">
     <link href="{{ secure_asset('assets/css/styles.css') }}" rel="stylesheet">
-
-    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-    <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-    <!-- Font Awesome Icons -->
+    <!-- Icon -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     @include('layouts.navbar')
-
     <div id="layoutSidenav">
         @include('layouts.sidenav')
 
@@ -41,8 +37,9 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Custom JS -->
+    <!-- JS Custom -->
     <script src="{{ secure_asset('assets/js/scripts.js') }}"></script>
     <script src="{{ secure_asset('assets/demo/datatables.js') }}"></script>
+    
 </body>
 </html>

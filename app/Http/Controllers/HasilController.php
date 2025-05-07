@@ -101,14 +101,14 @@ public function destroy($id)
 }
 
 
-public function getByBulan($bulan)
+public function getHasilByBulanTahun(Request $request)
 {
-    // Misal bulan dalam format '2025-04'
-    $hasil = HasilPrediksi::where('bulan', $bulan)->get();
+    $tahun = $request->input('tahun');
+    $bulan = $request->input('bulan');
 
-    if ($hasil->isEmpty()) {
-        return response()->json(['message' => 'Data tidak ditemukan'], 404);
-    }
+    $hasil = HasilPrediksi::where('tahun', $tahun)
+                ->where('bulan', $bulan)
+                ->get();
 
     return response()->json($hasil);
 }

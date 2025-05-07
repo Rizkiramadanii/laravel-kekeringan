@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HasilController;
 
-Route::get('/hasil-prediksi/{bulan}', [HasilController::class, 'getByBulan']);
+Route::get('/hasilprediksi', [HasilController::class, 'getHasilByBulanTahun']);
+
 
 /*
 |--------------------------------------------------------------------------
