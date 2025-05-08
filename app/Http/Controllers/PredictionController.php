@@ -65,7 +65,7 @@ class PredictionController extends Controller
 
         // Kirim data ke Flask API untuk prediksi
         try {
-            $response = Http::post('http://127.0.0.1:5000/predict', $data);
+            $response = Http::post('http://185.201.8.131:5000/predict', $data);
 
             if ($response->successful()) {
                 $result = $response->json();
