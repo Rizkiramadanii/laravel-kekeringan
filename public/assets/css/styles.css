@@ -539,6 +539,49 @@ pre code {
   overflow-y: scroll;
 }
 
+/* Membatasi lebar konten dan menyesuaikan padding */
+.container {
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Konten lebih kecil di layar kecil */
+@media (max-width: 768px) {
+  .container {
+      font-size: 0.9rem;
+  }
+
+  h1, h2, h3, h4 {
+      font-size: 90%;
+  }
+
+  table {
+      font-size: 0.85rem;
+  }
+
+  .navbar-logo {
+      max-width: 100px;
+      height: auto;
+  }
+}
+
+/* Lebih kecil lagi di layar sangat kecil */
+@media (max-width: 480px) {
+  .container {
+      font-size: 0.8rem;
+  }
+
+  .navbar-logo {
+      max-width: 80px;
+  }
+
+  .btn {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+  }
+}
+
 .container,
 .container-fluid,
 .container-xl,

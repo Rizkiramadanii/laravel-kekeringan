@@ -28,6 +28,8 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/prediksi', [PredictionController::class, 'index'])->name('prediksi');
     Route::post('/prediksi', [PredictionController::class, 'prediksi'])->name('prediksi.prediksi');
     Route::get('/hasil', [PredictionController::class, 'hasil'])->name('hasil');
+    Route::post('/prediksi/import', [PredictionController::class, 'import'])->name('prediksi.import');
+
 
     // Menyimpan hasil prediksi ke tabel
     Route::post('/hasil/simpan', [HasilController::class, 'simpan'])->name('hasil.simpan');

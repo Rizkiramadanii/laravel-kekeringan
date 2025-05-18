@@ -7,7 +7,7 @@
         <i class="fas fa-bars"></i>
     </button>
     <!-- Memastikan logo dimuat melalui HTTPS -->
-    <img class="navbar-logo d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" src="{{ secure_asset('assets/img/Logo-BMKG.png') }}" alt="Logo BMKG">
+    <img class="navbar-logo d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" src="{{ asset('assets/img/Logo-BMKG.png') }}" alt="Logo BMKG">
     <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

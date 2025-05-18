@@ -10,6 +10,16 @@
         <li class="breadcrumb-item active">Prediksi</li>
     </ol>
 
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @elseif (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul class="mb-0">
@@ -20,18 +30,41 @@
         </div>
     @endif
 
+    {{-- Import Excel --}}
     <div class="card shadow mb-4" style="border: 1px solid #ccc;">
-        <div class="card-header text-white" style="background-color: #007bff;"> {{-- Biru Primary --}}
+        <div class="card-header text-white" style="background-color: #28a745;"> {{-- Hijau --}}
+            <h5 class="mb-0"><i class="fas fa-file-excel me-2"></i> Import Data Excel untuk Prediksi Cepat</h5>
+        </div>
+        <div class="card-body" style="background-color: #f4fdf4;">
+            <form action="{{ route('prediksi.import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label for="file_excel">Pilih File Excel (.xlsx / .xls)</label>
+                        <input type="file" name="file_excel" class="form-control" required>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-upload me-2"></i>Upload & Prediksi
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {{-- Form Manual --}}
+    <div class="card shadow mb-4" style="border: 1px solid #ccc;">
+        <div class="card-header text-white" style="background-color: #007bff;"> {{-- Biru --}}
             <h5 class="mb-0"><i class="fas fa-clipboard-list me-2"></i> Form Data Input</h5>
         </div>
-        <div class="card-body" style="background-color: #f0f4f8;"> {{-- Abu kebiruan --}}
+        <div class="card-body" style="background-color: #f0f4f8;">
             <form action="{{ route('prediksi.prediksi') }}" method="POST">
                 @csrf
 
                 @for ($bulan = 1; $bulan <= 3; $bulan++)
                     <div class="border-bottom mb-3 pb-2">
                         <h5 class="text-primary fw-bold mb-3">Bulan {{ $bulan }}</h5>
-
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="SPI_3bulan_{{ $bulan }}">SPI 3 Bulan</label>
@@ -66,7 +99,9 @@
                 @endfor
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane me-2"></i>Prediksi</button>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-paper-plane me-2"></i>Prediksi
+                    </button>
                 </div>
             </form>
         </div>
