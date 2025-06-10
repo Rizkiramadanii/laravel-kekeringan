@@ -10,11 +10,17 @@
         <li class="breadcrumb-item"><a href="{{ route('hasil.index') }}">Hasil Prediksi</a></li>
         <li class="breadcrumb-item active">Detail</li>
     </ol>
-
+    <div class="text-end mb-3">
+        <button class="btn btn-outline-primary" onclick="window.print()">
+            <i class="fas fa-print"></i> Cetak Hasil Prediksi
+        </button>
+    </div>
+    
     <!-- Informasi Umum -->
     <div class="card shadow mb-4 border-primary">
         <div class="card-header fw-bold bg-primary text-white">Informasi Umum</div>
         <div class="card-body row g-3">
+            <div class="col-md-6"><strong>Nama Stasiun:</strong> {{ $hasil->nama_stasiun ?? 'Tidak tersedia' }}</div>
             <div class="col-md-6"><strong>Bulan:</strong> {{ $hasil->bulan }}</div>
             <div class="col-md-6"><strong>Tahun:</strong> {{ $hasil->tahun }}</div>
             <div class="col-md-6"><strong>Label Akhir:</strong> {{ $hasil->label }}</div>
@@ -71,7 +77,7 @@
                 <tbody>
                     @foreach($predictions as $model => $result)
                         @if($model != 'Voting Ensemble')
-                            <tr class="text-white fw-semibold 
+                            <tr class="text fw-semibold 
                                 @if($result['label'] == 'Kering') bg-danger 
                                 @elseif($result['label'] == 'Normal') bg-success 
                                 @elseif($result['label'] == 'Basah') bg-info @endif">
@@ -114,7 +120,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-white fw-semibold 
+                        <tr class="text fw-semibold 
                             @if($ensemble['label'] == 'Kering') bg-danger 
                             @elseif($ensemble['label'] == 'Normal') bg-success 
                             @elseif($ensemble['label'] == 'Basah') bg-info @endif">
@@ -147,4 +153,96 @@
         </div>
     </div>
 </footer>
+<style>
+    @media print {
+    @page {
+        size: A4 portrait;
+        margin: 2cm;
+    }
+
+    html, body, * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    html, body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+        font-size: 10.5px;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Hilangkan elemen non-penting saat print */
+    .btn, .breadcrumb, footer, .text-end, .navbar, .sidebar {
+        display: none !important;
+    }
+
+    .card {
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 10px;
+    }
+
+    .card-header, .card-body {
+        padding: 8px 12px !important;
+    }
+
+    .table {
+        width: 100% !important;
+        font-size: 12px;
+        border-collapse: collapse !important;
+    }
+
+    .table th, .table td {
+        border: 1px solid #000 !important;
+        padding: 4px 6px !important;
+    }
+
+    .table-dark th, .table-light th, .table-active {
+        background-color: #f8f9fa !important;
+        color: #000 !important;
+    }
+
+    .bg-danger {
+        background-color: #dc3545 !important;
+        color: #000000 !important;
+    }
+
+    .bg-success {
+        background-color: #198754 !important;
+        color: #000000 !important;
+    }
+
+    .bg-info {
+        background-color: #0dcaf0 !important;
+        color: #000 !important;
+    }
+
+    .text-white {
+        color: #ffffff !important;
+    }
+
+    h1, h5 {
+        text-align: center;
+        margin: 5px 0 10px 0 !important;
+        padding: 0 !important;
+    }
+
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        page-break-inside: avoid;
+        display: block !important;
+    }
+
+    .container-fluid, .table-responsive {
+        overflow: visible !important;
+    }
+}
+    </style>
+
 @endsection
